@@ -7,7 +7,8 @@ namespace AlfaSoftTest.Infrastructure
 {
     public class BitbucketApiClient
     {
-        private const string BITBUCKET_BASE_URL = "https://api.bitbucket.org/2.0";
+        private const string BITBUCKET_BASE_URL = "https://api.bitbucket.org";
+        private const string BITBUCKET_VERSION_PATH = "2.0";
         private const string BITBUCKET_USERS_ENDPOINT_PATH = "users";
 
         private readonly HttpClient _httpClient;
@@ -21,8 +22,8 @@ namespace AlfaSoftTest.Infrastructure
 
         public async Task<string> GetUserAsync(string user)
         {
-            var endpointFormat = "{0}/{1}";
-            var requestUri = string.Format(endpointFormat, BITBUCKET_USERS_ENDPOINT_PATH, user);
+            var endpointFormat = "{0}/{1}/{2}";
+            var requestUri = string.Format(endpointFormat, BITBUCKET_VERSION_PATH, BITBUCKET_USERS_ENDPOINT_PATH, user);
 
             var response = await _httpClient.GetAsync(requestUri).ConfigureAwait(false);
 
@@ -33,9 +34,13 @@ namespace AlfaSoftTest.Infrastructure
                 //app = JsonConvert.DeserializeObject<Application>(responseContent); => Deserialize new type
 
             }
+            else if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                Console.WriteLine($"-> BitbucketApiClient: User '{user}' not found");
+            }
             else
             {
-                Console.WriteLine("Error getting Log");
+                Console.WriteLine($"-> BitbucketApiClient: Error getting for user '{user}'");
             }
 
             return responseContent;
