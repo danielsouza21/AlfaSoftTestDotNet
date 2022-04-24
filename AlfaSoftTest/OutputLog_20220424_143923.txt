@@ -1,0 +1,8 @@
+[24/04/2022 14:39:23] -> LoggingService: 'Running application AlfaSoftTest - 24/04/2022 14:39:23'
+[24/04/2022 14:39:23] -> BitbucketFacade: 'Getting information for user '60ad74d38ab0d9006921b597''
+[24/04/2022 14:39:23] -> BitbucketApiClient: 'Performing GET request for '2.0/users/60ad74d38ab0d9006921b597''
+[24/04/2022 14:39:25] -> BitbucketApiClient: '{"display_name": "Daniel Oliveira Souza", "account_id": "60ad74d38ab0d9006921b597", "links": {"hooks": {"href": "https://api.bitbucket.org/2.0/workspaces/%7Bc47998b1-c0a8-473a-a0f8-542c1cf623ee%7D/hooks"}, "self": {"href": "https://api.bitbucket.org/2.0/users/%7Bc47998b1-c0a8-473a-a0f8-542c1cf623ee%7D"}, "repositories": {"href": "https://api.bitbucket.org/2.0/repositories/%7Bc47998b1-c0a8-473a-a0f8-542c1cf623ee%7D"}, "html": {"href": "https://bitbucket.org/%7Bc47998b1-c0a8-473a-a0f8-542c1cf623ee%7D/"}, "avatar": {"href": "https://secure.gravatar.com/avatar/906a7fdfff0b610e642eb9868134cfa4?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FDS-3.png"}, "snippets": {"href": "https://api.bitbucket.org/2.0/snippets/%7Bc47998b1-c0a8-473a-a0f8-542c1cf623ee%7D"}}, "nickname": "Daniel Oliveira Souza", "created_on": "2022-04-24T13:20:38.230607+00:00", "is_staff": false, "location": null, "account_status": "active", "type": "user", "uuid": "{c47998b1-c0a8-473a-a0f8-542c1cf623ee}"}'
+[24/04/2022 14:39:30] -> BitbucketFacade: 'Getting information for user 'abcTest''
+[24/04/2022 14:39:30] -> BitbucketApiClient: 'Performing GET request for '2.0/users/abcTest''
+[24/04/2022 14:39:30] -> BitbucketApiClient: 'User 'abcTest' not found'
+[24/04/2022 14:39:40] -> Program: 'Application Finished'

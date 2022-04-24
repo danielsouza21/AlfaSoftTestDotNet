@@ -7,6 +7,8 @@ namespace AlfaSoftTest.Application.Facades
 {
     public class BitbucketFacade
     {
+        private const int DELAY_BETWEEN_REQUESTS = 5000;
+
         private readonly BitbucketApiClient _bitbucketApiClient;
         private readonly LoggingService _loggingService;
 
@@ -16,12 +18,16 @@ namespace AlfaSoftTest.Application.Facades
             _bitbucketApiClient = new BitbucketApiClient(_loggingService);
         }
 
-        public async Task ProcessUsersListAsync(IEnumerable<string> usersList) //TODO: Trocar nome metodo
+        public async Task GetInformationForUsersAsync(IEnumerable<string> usersList)
         {
             foreach (var user in usersList)
             {
+                _loggingService.LogInfo<BitbucketFacade>($"Getting information for user '{user}'");
+
                 var result = await _bitbucketApiClient.GetUserAsync(user);
-                await Task.Delay(DELAY_BEFORE_FINISH_APP);
+                if(result != null) _loggingService.LogInfo<BitbucketFacade>($"Success Result '{user}' = {result}");
+
+                await Task.Delay(DELAY_BETWEEN_REQUESTS);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace AlfaSoftTest.Infrastructure
             _streamWriter.AutoFlush = true;
 
             var startMessage = $"Running application AlfaSoftTest - {DateTime.Now}";
-            LogInfo(startMessage, nameof(LoggingService));
+            LogInfo<LoggingService>(startMessage);
         }
 
         public void LogError(string message)
@@ -29,9 +29,9 @@ namespace AlfaSoftTest.Infrastructure
             Console.WriteLine(messageFormatted);
         }
 
-        public void LogInfo(string message, string service)
+        public void LogInfo<Service>(string message)
         {
-            var messageFormatted = $"[{DateTime.Now}] -> {service}: '{message}'";
+            var messageFormatted = $"[{DateTime.Now}] -> {typeof(Service).Name}: '{message}'";
             _streamWriter.WriteLine(messageFormatted);
             Console.WriteLine(messageFormatted);
         }

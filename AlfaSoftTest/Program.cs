@@ -8,8 +8,6 @@ namespace AlfaSoftTest
 {
     public class Program
     {
-        //TODO: Configure times between requests
-
         private const int EXPECTED_COUNT_INPUT_ARGUMENTS = 1;
         private const int DELAY_BEFORE_FINISH_APP = 5000;
 
@@ -34,10 +32,10 @@ namespace AlfaSoftTest
             var linesFromTxtInput = FileManagementFacade.GetLinesFromTxtFile(args, loggingService);
 
             var bitbucketApiClient = new BitbucketFacade(loggingService);
-            await bitbucketApiClient.ProcessUsersListAsync(linesFromTxtInput);
+            await bitbucketApiClient.GetInformationForUsersAsync(linesFromTxtInput);
 
             await Task.Delay(DELAY_BEFORE_FINISH_APP);
-            loggingService.LogInfo("Application Finished", nameof(Program));
+            loggingService.LogInfo<Program>("Application Finished");
         }
     }
 }

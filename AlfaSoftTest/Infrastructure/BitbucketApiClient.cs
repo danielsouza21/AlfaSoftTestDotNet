@@ -30,18 +30,17 @@ namespace AlfaSoftTest.Infrastructure
             var endpointFormat = "{0}/{1}/{2}";
             var requestUri = string.Format(endpointFormat, BITBUCKET_VERSION_PATH, BITBUCKET_USERS_ENDPOINT_PATH, user);
 
+            _loggingService.LogInfo<BitbucketApiClient>($"Performing GET request for '{_httpClient.BaseAddress}{requestUri}'");
             var response = await _httpClient.GetAsync(requestUri).ConfigureAwait(false);
-
-            var responseObject = new UserBitbucket();
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
-                responseObject = JsonConvert.DeserializeObject<UserBitbucket>(responseContent);
+                return JsonConvert.DeserializeObject<UserBitbucket>(responseContent);
             }
             else if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                _loggingService.LogInfo($"User '{user}' not found", nameof(BitbucketApiClient));
+                _loggingService.LogInfo<BitbucketApiClient>($"User '{user}' not found");
             }
             else
             {
@@ -50,7 +49,7 @@ namespace AlfaSoftTest.Infrastructure
                 throw new Exception(messageError);
             }
 
-            return responseObject;
+            return null;
         }
     }
 }

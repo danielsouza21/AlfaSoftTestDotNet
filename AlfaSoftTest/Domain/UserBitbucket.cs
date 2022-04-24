@@ -32,5 +32,10 @@ namespace AlfaSoftTest.Domain
 
         [JsonProperty("uuid")]
         public string Uuid { get; set; }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }
