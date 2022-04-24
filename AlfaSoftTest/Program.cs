@@ -31,8 +31,8 @@ namespace AlfaSoftTest
 
             var linesFromTxtInput = FileManagementFacade.GetLinesFromTxtFile(args, loggingService);
 
-            var bitbucketApiClient = new BitbucketFacade(loggingService);
-            await bitbucketApiClient.GetInformationForUsersAsync(linesFromTxtInput);
+            var bitbucketFacade = new BitbucketFacade(loggingService);
+            await bitbucketFacade.GetInformationForUsersAsync(linesFromTxtInput);
 
             await Task.Delay(DELAY_BEFORE_FINISH_APP);
             loggingService.LogInfo<Program>("Application Finished");
