@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AlfaSoftTest": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\dti Digital\\source\\repos\\AlfaSoftTest\\AlfaSoftTest\\Users.txt\""
+    }
+  }
+}
