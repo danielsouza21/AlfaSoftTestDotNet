@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AlfaSoftTest.Domain;
+using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -20,19 +22,19 @@ namespace AlfaSoftTest.Infrastructure
             _httpClient.Timeout = TimeSpan.FromMinutes(1);
         }
 
-        public async Task<string> GetUserAsync(string user)
+        public async Task<UserBitbucket> GetUserAsync(string user)
         {
             var endpointFormat = "{0}/{1}/{2}";
             var requestUri = string.Format(endpointFormat, BITBUCKET_VERSION_PATH, BITBUCKET_USERS_ENDPOINT_PATH, user);
 
             var response = await _httpClient.GetAsync(requestUri).ConfigureAwait(false);
 
-            var responseContent = string.Empty;
+            var responseObject = new UserBitbucket();
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                responseContent = await response.Content.ReadAsStringAsync();
-                //app = JsonConvert.DeserializeObject<Application>(responseContent); => Deserialize new type
-
+                var responseContent = await response.Content.ReadAsStringAsync();
+                responseObject = JsonConvert.DeserializeObject<UserBitbucket>(responseContent);
             }
             else if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -43,7 +45,7 @@ namespace AlfaSoftTest.Infrastructure
                 Console.WriteLine($"-> BitbucketApiClient: Error getting for user '{user}'");
             }
 
-            return responseContent;
+            return responseObject;
         }
     }
 }
