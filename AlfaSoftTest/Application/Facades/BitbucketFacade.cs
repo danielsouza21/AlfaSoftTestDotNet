@@ -21,6 +21,7 @@ namespace AlfaSoftTest.Application.Facades
             foreach (var user in usersList)
             {
                 var result = await _bitbucketApiClient.GetUserAsync(user);
+                await Task.Delay(DELAY_BEFORE_FINISH_APP);
             }
         }
     }

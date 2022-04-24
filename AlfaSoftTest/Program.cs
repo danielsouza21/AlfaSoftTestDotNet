@@ -9,9 +9,10 @@ namespace AlfaSoftTest
     public class Program
     {
         //TODO: Configure times between requests
-        //TODO: Configure logout time
 
         private const int EXPECTED_COUNT_INPUT_ARGUMENTS = 1;
+        private const int DELAY_BEFORE_FINISH_APP = 5000;
+
         private const string OUTPUT_LOG_FILE_NAME = "OutputLog";
 
         public static void Main(string[] args)
@@ -34,6 +35,9 @@ namespace AlfaSoftTest
 
             var bitbucketApiClient = new BitbucketFacade(loggingService);
             await bitbucketApiClient.ProcessUsersListAsync(linesFromTxtInput);
+
+            await Task.Delay(DELAY_BEFORE_FINISH_APP);
+            loggingService.LogInfo("Application Finished", nameof(Program));
         }
     }
 }

@@ -41,7 +41,7 @@ namespace AlfaSoftTest.Infrastructure
             }
             else if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                _loggingService.LogInfo($"User '{user}' not found");
+                _loggingService.LogInfo($"User '{user}' not found", nameof(BitbucketApiClient));
             }
             else
             {
