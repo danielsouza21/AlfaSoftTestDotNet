@@ -1,0 +1,16 @@
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.exe
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.deps.json
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.runtimeconfig.json
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.runtimeconfig.dev.json
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.dll
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\bin\Debug\net5.0\AlfaSoftTest.pdb
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.csproj.AssemblyReference.cache
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.AssemblyInfoInputs.cache
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.AssemblyInfo.cs
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.csproj.CoreCompileInputs.cache
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.dll
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\refint\AlfaSoftTest.dll
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.pdb
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\AlfaSoftTest.genruntimeconfig.cache
+C:\Users\dti Digital\source\repos\AlfaSoftTest\AlfaSoftTest\obj\Debug\net5.0\ref\AlfaSoftTest.dll
