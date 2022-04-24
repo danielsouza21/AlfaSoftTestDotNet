@@ -8,10 +8,12 @@ namespace AlfaSoftTest.Application.Facades
     public class BitbucketFacade
     {
         private readonly BitbucketApiClient _bitbucketApiClient;
+        private readonly LoggingService _loggingService;
 
-        public BitbucketFacade()
+        public BitbucketFacade(LoggingService loggingService)
         {
-            _bitbucketApiClient = new BitbucketApiClient();
+            _loggingService = loggingService;
+            _bitbucketApiClient = new BitbucketApiClient(_loggingService);
         }
 
         public async Task ProcessUsersListAsync(IEnumerable<string> usersList) //TODO: Trocar nome metodo

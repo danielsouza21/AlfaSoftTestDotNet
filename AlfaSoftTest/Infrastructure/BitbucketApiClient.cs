@@ -14,9 +14,12 @@ namespace AlfaSoftTest.Infrastructure
         private const string BITBUCKET_USERS_ENDPOINT_PATH = "users";
 
         private readonly HttpClient _httpClient;
+        private readonly LoggingService _loggingService;
 
-        public BitbucketApiClient()
+        public BitbucketApiClient(LoggingService loggingService)
         {
+            _loggingService = loggingService;
+
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(BITBUCKET_BASE_URL);
             _httpClient.Timeout = TimeSpan.FromMinutes(1);
@@ -38,11 +41,13 @@ namespace AlfaSoftTest.Infrastructure
             }
             else if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                Console.WriteLine($"-> BitbucketApiClient: User '{user}' not found");
+                _loggingService.LogInfo($"User '{user}' not found");
             }
             else
             {
-                Console.WriteLine($"-> BitbucketApiClient: Error getting for user '{user}'");
+                var messageError = $"Error getting for user '{user}'";
+                _loggingService.LogError(messageError);
+                throw new Exception(messageError);
             }
 
             return responseObject;

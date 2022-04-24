@@ -1,4 +1,5 @@
 ﻿using AlfaSoftTest.Application.Facades;
+using AlfaSoftTest.Infrastructure;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,12 +8,11 @@ namespace AlfaSoftTest
 {
     public class Program
     {
-        //TODO: Deserialize response api
-        //TODO: Log in output file 
         //TODO: Configure times between requests
         //TODO: Configure logout time
 
         private const int EXPECTED_COUNT_INPUT_ARGUMENTS = 1;
+        private const string OUTPUT_LOG_FILE_NAME = "OutputLog";
 
         public static void Main(string[] args)
         {
@@ -21,14 +21,18 @@ namespace AlfaSoftTest
 
         public async static Task MainAsync(string[] args)
         {
+            var loggingService = new LoggingService(args, OUTPUT_LOG_FILE_NAME);            
+
             if (args is null || args.Count() != EXPECTED_COUNT_INPUT_ARGUMENTS)
             {
-                throw new Exception("Invalid entries. Correct execution must have a single argument with full path to a txt file.");
+                var messageError = "Invalid entries. Correct execution must have a single argument with full path to a txt file.";
+                loggingService.LogError(messageError);
+                throw new Exception(messageError);
             }
 
-            var linesFromTxtInput = FileManagementFacade.GetLinesFromTxtFile(args);
+            var linesFromTxtInput = FileManagementFacade.GetLinesFromTxtFile(args, loggingService);
 
-            var bitbucketApiClient = new BitbucketFacade();
+            var bitbucketApiClient = new BitbucketFacade(loggingService);
             await bitbucketApiClient.ProcessUsersListAsync(linesFromTxtInput);
         }
     }
